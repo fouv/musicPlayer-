@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import static android.media.AudioManager.STREAM_MUSIC;
 
@@ -41,6 +42,12 @@ public class MainActivity extends AppCompatActivity {
                 finalTime = mediaPlayer.getDuration();
                 startTime = mediaPlayer.getCurrentPosition();
                 b2.setEnabled(true);
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        Toast.makeText(MainActivity.this, "I'm Finished", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
